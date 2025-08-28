@@ -1,0 +1,21 @@
+#EX-1 isme hum directly interface kar rhe hai led ko jo ki p2.0 par connect hai. isme hum led ko blink kara rhe hai
+#include<reg52.h>
+sbit LED_pin = P2^0;
+
+void ms_delay(unsigned int ms)
+{
+     unsigned int i;
+     for(i=0;i<=ms;i++);
+}
+
+void main()
+{
+     P2 = 0x00;
+     while(1)
+     {
+          LED_pin = 1;
+          ms_delay(50);
+          LED_pin = 0;
+          ms_delay(50);
+     }
+}
