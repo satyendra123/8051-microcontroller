@@ -1,0 +1,14 @@
+sabse pahle keil uvision software ko download kare aur humare pass ek 8051 ka development board hona chahiye with avr programmer for upload the program in it. aur humare pass ek progisp naam ka software hona chahiye isse hi hum 8051 me hex file upload kar sakte hai
+
+ports->
+             name          function         Ram address
+             p0              i/o              80
+             p1              i/o              90
+             p2              i/o              A0
+             p3              i/o              B0
+
+  Address->
+             sfr
+             sbit ise hum kuch is tarah se define karte hai sit bit_name = sfr_name^ bit_position    or simply we can write sbit port1_p0 = 0x90     
+
+      
