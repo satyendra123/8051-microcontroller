@@ -19,3 +19,74 @@ void main()
           ms_delay(50);
      }
 }
+
+#EX-2 hum ek dusra code likhte hai jisme humare pass ek header file hoga aur header file me variable aur function already defined honge aur uska use hum kar sakte hai directly apne main.c file me. so hum isko dekhte hai kuch is tarah se
+a) led_blinking.h
+#ifndef _AT89S52_H
+#define _AT89S52_h
+
+sfr port0=0x80;
+sfr port1=0x90;
+sfr port2=0xA0;
+sfr port3=0xB0;
+
+sbit led = port1^0;
+
+sbit port0_p0 = 0x80;
+sbit port0_p1 = 0x81;
+sbit port0_p2 = 0x82;
+sbit port0_p3 = 0x83;
+sbit port0_p4 = 0x84;
+sbit port0_p5 = 0x85;
+sbit port0_p6 = 0x86;
+sbit port0_p7 = 0x87;
+
+sbit port1_p0 = 0x90;
+sbit port1_p1 = 0x91;
+sbit port1_p2 = 0x92;
+sbit port1_p3 = 0x93;
+sbit port1_p4 = 0x94;
+sbit port1_p5 = 0x95;
+sbit port1_p6 = 0x96;
+sbit port1_p7 = 0x97;
+
+sbit port2_p0 = 0xA0;
+sbit port2_p1 = 0xA1;
+sbit port2_p2 = 0xA2;
+sbit port2_p3 = 0xA3;
+sbit port2_p4 = 0xA4;
+sbit port2_p5 = 0xA5;
+sbit port2_p6 = 0xA6;
+sbit port2_p7 = 0xA7;
+
+sbit port3_p0 = 0xB0;
+sbit port3_p1 = 0xB1;
+sbit port3_p2 = 0xB2;
+sbit port3_p3 = 0xB3;
+sbit port3_p4 = 0xB4;
+sbit port3_p5 = 0xB5;
+sbit port3_p6 = 0xB6;
+sbit port3_p7 = 0xB7;
+
+#endif
+
+b) main.c
+#include "AT89s52.h"
+#include<reg52.h>
+
+void ms_delay(unsigned int d)
+{
+     unsigned int i;
+     for(i=0;i<=d;i++);
+}
+
+void main()
+{
+     while(1)
+     {
+          port_p0 = 1;
+          delay(30000);
+          port_p0 = 0;
+          delay(30000);
+     }
+}
