@@ -183,3 +183,30 @@ void main() {
         ms_delay(3000);
     }
 }
+
+EX-5 interface the 7 segment display with 89s52. isme humne port1 ke sare points ko connect kiye hai 7 segment se. port1.0 jo hai a se connect rhega aur port1.7 pin jo hai h pin se connect rhega
+#include "AT89S52.h"
+void delay(unsigned int d)
+{
+     unsigned int i;
+     for(i=0;i<=d;i++);
+}
+
+unsigned char seg_code[10] = {0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
+unsigned int i;
+
+int main() {
+    port1 = 0x00;
+    while(1) 
+		{
+        for(i=0; i<10; i++) 
+			{
+            port1 = seg_code[i];
+            delay(40000);
+      }
+			if(i==10)
+			{
+				i=0;
+			}
+    }
+}
