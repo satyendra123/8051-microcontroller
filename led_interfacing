@@ -90,3 +90,96 @@ void main()
           delay(30000);
      }
 }
+
+EX-3 now suppose in the port 0 all the 8 leds are connected. and i want that these leds are turn on and off one by one
+#include "AT89s52.h"
+#include<reg52.h>
+
+void ms_delay(unsigned int d)
+{
+     unsigned int i;
+     for(i=0;i<=d;i++);
+}
+
+void main()
+{
+    while(1) {
+        // LED on P0.0
+        port0_p0 = 1; port0_p1 = 0; port0_p2 = 0; port0_p3 = 0;
+        port0_p4 = 0; port0_p5 = 0; port0_p6 = 0; port0_p7 = 0;
+        ms_delay(3000);
+
+        // LED on P0.1
+        port0_p0 = 0; port0_p1 = 1; port0_p2 = 0; port0_p3 = 0;
+        port0_p4 = 0; port0_p5 = 0; port0_p6 = 0; port0_p7 = 0;
+        ms_delay(3000);
+
+        // LED on P0.2
+        port0_p0 = 0; port0_p1 = 0; port0_p2 = 1; port0_p3 = 0;
+        port0_p4 = 0; port0_p5 = 0; port0_p6 = 0; port0_p7 = 0;
+        ms_delay(3000);
+
+        // LED on P0.3
+        port0_p0 = 0; port0_p1 = 0; port0_p2 = 0; port0_p3 = 1;
+        port0_p4 = 0; port0_p5 = 0; port0_p6 = 0; port0_p7 = 0;
+        ms_delay(3000);
+
+        // LED on P0.4
+        port0_p0 = 0; port0_p1 = 0; port0_p2 = 0; port0_p3 = 0;
+        port0_p4 = 1; port0_p5 = 0; port0_p6 = 0; port0_p7 = 0;
+        ms_delay(3000);
+
+        // LED on P0.5
+        port0_p0 = 0; port0_p1 = 0; port0_p2 = 0; port0_p3 = 0;
+        port0_p4 = 0; port0_p5 = 1; port0_p6 = 0; port0_p7 = 0;
+        ms_delay(3000);
+
+        // LED on P0.6
+        port0_p0 = 0; port0_p1 = 0; port0_p2 = 0; port0_p3 = 0;
+        port0_p4 = 0; port0_p5 = 0; port0_p6 = 1; port0_p7 = 0;
+        ms_delay(3000);
+
+        // LED on P0.7
+        port0_p0 = 0; port0_p1 = 0; port0_p2 = 0; port0_p3 = 0;
+        port0_p4 = 0; port0_p5 = 0; port0_p6 = 0; port0_p7 = 1;
+        ms_delay(3000);
+    }
+}
+
+Note- isi same chiz ko hum kuch is tarike se bhi kar sakte hai.taki hume sare port bits ke liye alag se nahi likhna padhe. so iske liye hum 
+#include <reg52.h>
+
+// simple delay
+void ms_delay(unsigned int d)
+{
+     unsigned int i;
+     for(i=0;i<=d;i++);
+}
+
+void main() {
+    while(1) {
+        P0 = 0x01;    // 00000001 → LED on P0.0
+        ms_delay(3000);
+
+        P0 = 0x02;    // 00000010 → LED on P0.1
+        ms_delay(3000);
+
+        P0 = 0x04;    // 00000100 → LED on P0.2
+        ms_delay(3000);
+
+        P0 = 0x08;    // 00001000 → LED on P0.3
+        ms_delay(3000);
+
+        P0 = 0x10;    // 00010000 → LED on P0.4
+        ms_delay(3000);
+
+        P0 = 0x20;    // 00100000 → LED on P0.5
+        ms_delay(3000);
+
+        P0 = 0x40;    // 01000000 → LED on P0.6
+        ms_delay(3000);
+
+        P0 = 0x80;    // 10000000 → LED on P0.7
+        ms_delay(3000);
+    }
+}
